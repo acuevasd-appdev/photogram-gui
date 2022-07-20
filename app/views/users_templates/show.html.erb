@@ -1,1 +1,35 @@
 <h1> <%= @this_user.username %> </h1>
+
+<dl>
+  <dt>ID</dt>
+  <dd><%= @this_user.id %> </dd>
+  <dt>Edit user </dt>
+  <dd><form action="">
+    <div><label for="user">Username</label>
+    <input id="update_user" type="text" placeholder=<%=@this_user.username %> name="update_username">
+    <button>Update user</button></div>
+</form></dd>
+  </dl>
+
+<h2> Own phots (<%= @this_user.own_photos.size %>)</h2>
+
+<table border="1"> 
+  <tr>
+    <th>Image</th>
+    <th>Owner</th>
+    <th>Caption</th>
+    <th>Posted</th>
+    <th></th>
+  </tr>
+
+  <% @this_user.own_photos.each do |this_photo|%>
+    <tr>
+    <td> <img src="<%= this_photo.image%>" style ="width:250px;"></td> 
+    <td> <%= @this_user.username %> </td>
+    <td> <%= this_photo.caption %> </td> 
+    <td> <%= this_photo.created_at %> </td>
+    <td><a href="/photos/<%=this_photo.id %>">Show details</a></td>
+  </tr>
+  <% end %>
+
+</table>
