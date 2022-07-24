@@ -16,4 +16,36 @@ class UsersController<ApplicationController
       render({:template => "users_templates/show.html.erb"})
     end
   end
+
+  def add_user
+    username_input = params.fetch("input_new_username")
+
+    new_user = User.new
+    new_user.username = username_input
+    new_user.private = TRUE
+    new_user.likes_count = 0
+    new_user.comments_count = 0
+
+    new_user.save
+
+    new_re = "/users/"+username_input
+    redirect_to(new_re)
+  end
+
+  def update_user
+    the_user= params.fetch("path_id")
+    matching_user = User.where({:username => the_user})
+    @this_user= matching_user.first
+
+    username_input = params.fetch("update_username")
+
+    @this_user.username = username_input
+
+    @this_user.save
+    new_re = "/users/"+update_username
+    redirect_to(new_re)
+  end
+
+
+
 end
