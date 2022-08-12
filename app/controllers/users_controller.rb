@@ -42,7 +42,7 @@ class UsersController<ApplicationController
     @this_user.username = username_input
 
     @this_user.save
-    new_re = "/users/"+update_username
+    new_re = "/users/"+username_input
     redirect_to(new_re)
   end
 

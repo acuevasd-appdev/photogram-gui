@@ -25,12 +25,14 @@ class PhotosController<ApplicationController
     new_photo = Photo.new
     new_photo.image = image_input
     new_photo.caption = caption_input
-    new_photo.owner_id = owner_input
+    new_photo.owner_id = owner_input.to_i
+    new_photo.comments_count = 0
+    new_photo.likes_count = 0
 
     new_photo.save
 
     new_re = "/photos/"+new_photo.id.to_s
-    redirect_to("/photos/")
+    redirect_to(new_re)
   end
 
   def update_photo

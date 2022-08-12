@@ -4,7 +4,7 @@
   <dt>ID</dt>
   <dd><%= @this_user.id %> </dd>
   <dt>Edit user </dt>
-  <dd><form action="">
+  <dd><form action="/update_user/<%=@this_user.username%>">
     <div><label for="update_user">Username</label>
     <input id="update_user" type="text" placeholder="Enter a username..." value=<%=@this_user.username %> name="update_username">
     <button>Update user</button></div>
